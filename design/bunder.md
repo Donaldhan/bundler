@@ -17,7 +17,7 @@
 2. 监听到创建用户，则添加地址到声誉管理器：
 
 ## 核心流程
-1. 启动捆绑服务：部署EntryPoint合约，初始化MempoolManager，BundleManager， ExecutionManager（开启executionManager自动捆绑UserOperation），ReputationManager（黑白名单），
+1. 启动捆绑服务：初始化MempoolManager，BundleManager， ExecutionManager（开启executionManager自动捆绑UserOperation），ReputationManager（黑白名单），
 开启EventsManager监听链上事件服务，启动捆绑服务BundlerServer；
 2. 用户通过RPC提交UserOperation，BundlerServer委托给ExecutionManager， ExecutionManager会验证UserOperation，没问题，提交到内存池MempoolManager（同时更新用户声誉），
 并尝试捆绑UserOperation；

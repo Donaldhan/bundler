@@ -184,7 +184,7 @@ export class BundleManager {
       throw e
     }
   }
-
+  ///捆绑UserOperation
   async createBundle (): Promise<[UserOperation[], StorageMap]> {
     const entries = this.mempoolManager.getSortedForInclusion()
     const bundle: UserOperation[] = []

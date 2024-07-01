@@ -108,6 +108,8 @@ export async function runBundler (argv: string[], overrideExit = true): Promise<
     } else {
       console.log('== debugrpc already st', config.debugRpc)
     }
+    //Simulation EntryPoint
+    //??????????????
     const ep = await deployEntryPoint(provider as any)
     const addr = ep.address
     console.log('deployed EntryPoint at', addr)
@@ -140,7 +142,7 @@ export async function runBundler (argv: string[], overrideExit = true): Promise<
     execManagerConfig.autoBundleMempoolSize = 0
     execManagerConfig.autoBundleInterval = 0
   }
-
+  //初始化bunderServer
   const [execManager, eventsManager, reputationManager, mempoolManager] = initServer(execManagerConfig, entryPoint.signer)
   const methodHandler = new UserOpMethodHandler(
     execManager,
@@ -149,6 +151,7 @@ export async function runBundler (argv: string[], overrideExit = true): Promise<
     config,
     entryPoint
   )
+  //启动时间监听器
   eventsManager.initEventListener()
   const debugHandler = config.debugRpc ?? false
     ? new DebugMethodHandler(execManager, eventsManager, reputationManager, mempoolManager)
